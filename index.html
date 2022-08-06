@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rrrryya</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
+    <div id="page-preloader"></div>
+    <div id="carbon-block"></div>
+    <div class="container">
+      <article>
+        <header>
+          <div class="image__wrapper">
+            <img src="./assets/avatar.png" alt="avatar" />
+            <div class="image__anim-box"></div>
+          </div>
+          <div class="name">рррряя</div>
+        </header>
+        <nav class="links">
+          <a audio href="#">INSTAGRAM</a>
+          <a audio href="#">TELEGRAM</a>
+          <a audio ston-link href="#">ONLYFANS</a>
+        </nav>
+      </article>
+
+      <div id="bg-anim"></div>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.cells.min.js"></script>
+      <script src="./scripts/oneko.js"></script>
+
+      <script>
+        window.addEventListener('DOMContentLoaded', () => {
+          VANTA.CELLS({
+            el: '#bg-anim',
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.0,
+            minWidth: 200.0,
+            scale: 1.0,
+            color1: 0x111e55,
+            color2: 0x72bff7,
+            size: 2.5,
+          });
+        });
+      </script>
+      <!-- Links hanndlers -->
+      <script>
+        window.addEventListener('DOMContentLoaded', () => {
+          const stonLink = document.querySelector('a[ston-link]');
+          const stonAudio = document.getElementById('ston-audio');
+
+          stonLink.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            stonAudio.play();
+
+            setTimeout(() => {
+              window.location = e.target.href;
+            }, 3000);
+          });
+
+          const audioLinks = document.querySelectorAll('a[audio]');
+          const linkAudio = document.getElementById('link-audio');
+
+          audioLinks.forEach((e) => {
+            e.addEventListener('mouseenter', () => {
+              linkAudio.play();
+            });
+
+            e.addEventListener('mouseover', () => {
+              linkAudio.pause();
+              linkAudio.currentTime = 0;
+            });
+          });
+        });
+      </script>
+      <!-- Add oneko cat -->
+      <script>
+        try {
+          fetch(
+            new Request(
+              'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
+              { method: 'HEAD', mode: 'no-cors' }
+            )
+          )
+            .then(function (response) {
+              return true;
+            })
+            .catch(function (e) {
+              var carbonScript = document.createElement('script');
+              carbonScript.src =
+                '//cdn.carbonads.com/carbon.js?serve=CE7DC2JW&placement=wwwcssscriptcom';
+              carbonScript.id = '_carbonads_js';
+              document.getElementById('carbon-block').appendChild(carbonScript);
+            });
+        } catch (error) {
+          console.log(error);
+        }
+      </script>
+      <!--  -->
+      <script>
+        const preloader = document.getElementById('page-preloader');
+
+        window.addEventListener('load', () => {
+          setTimeout(() => {
+            preloader.classList.toggle('active');
+          }, 500);
+        });
+      </script>
+    </div>
+  </body>
+</html>
